@@ -1,7 +1,5 @@
 const {createLogger, transports, format} = require('winston');
 
-process.on('unhandledRejection', error => logger.error({event: 'Unhandled promise rejection', error}));
-
 const addFormatting = format(info => {
   if(typeof info.message === 'string') info.message = { event: info.message };
 
@@ -12,13 +10,17 @@ const addFormatting = format(info => {
   return info;
 });
 
-module.exports = (() => createLogger({
-  format: format.combine(
-    format.timestamp(),
-    addFormatting(),
-    format.json(),
-  ),
-  transports: [
-    new transports.Console(),
-  ]
-}))();
+module.exports = (() => {
+  const logger = createLogger({
+    format: format.combine(
+      format.timestamp(),
+      addFormatting(),
+      format.json(),
+    ),
+    transports: [
+      new transports.Console(),
+    ]
+  });
+  process.on('unhandledRejection', error => logger.error({event: 'Unhandled promise rejection', error}));
+  return logger;
+})();

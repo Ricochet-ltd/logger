@@ -53,4 +53,8 @@ describe('should handle', () => {
     expect(log.message.error.message).to.equal('test');
     expect(typeof log.message.error.stack).to.equal('string')
   });
+
+  it('handles unhandled exceptions', () => {
+    Promise.reject('abc');
+  })
 });
