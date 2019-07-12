@@ -1,6 +1,6 @@
 {
   "name": "@ricochet/logger",
-  "version": "1.0.3",
+  "version": "1.0.4",
   "description": "Simple logger",
   "main": "index.js",
   "scripts": {
