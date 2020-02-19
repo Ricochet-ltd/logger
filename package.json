@@ -1,5 +1,5 @@
 {
-  "name": "@ricochet/logger",
+  "name": "@ricochet-ltd/logger",
   "version": "1.1.0",
   "description": "Simple logger",
   "main": "index.js",
