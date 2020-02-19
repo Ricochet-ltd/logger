@@ -11,16 +11,21 @@ const addFormatting = format(info => {
 });
 
 module.exports = (() => {
-  const logger = createLogger({
+  const options = {
     format: format.combine(
-      format.timestamp(),
-      addFormatting(),
-      format.json(),
+        format.timestamp(),
+        addFormatting(),
+        format.json(),
     ),
     transports: [
       new transports.Console(),
     ]
-  });
+  }
+  const logger = createLogger();
+
   process.on('unhandledRejection', error => logger.error({event: 'Unhandled promise rejection', error}));
+
+  logger.options = options;
+
   return logger;
 })();
