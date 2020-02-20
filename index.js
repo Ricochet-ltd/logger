@@ -20,12 +20,11 @@ module.exports = (() => {
     transports: [
       new transports.Console(),
     ]
-  }
-  const logger = createLogger();
+  };
+
+  const logger = createLogger(options);
 
   process.on('unhandledRejection', error => logger.error({event: 'Unhandled promise rejection', error}));
-
-  logger.options = options;
 
   return logger;
 })();
