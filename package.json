@@ -1,21 +1,21 @@
 {
   "name": "@ricochet-ltd/logger",
-  "version": "2.0.0",
+  "version": "3.0.0",
   "description": "Simple logger",
   "main": "index.js",
   "scripts": {
     "test": "mocha test"
   },
-  "publishConfig": { "registry": "https://npm.pkg.github.com/" },
+  "publishConfig": {
+    "registry": "https://npm.pkg.github.com/"
+  },
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "winston": "^3.2.1"
+    "stack-utils": "^2.0.2",
+    "winston": "^3.3.3"
   },
   "devDependencies": {
-    "std-mocks": "^1.0.1",
-    "chai": "^4.2.0",
-    "mocha": "^5.2.0",
-    "sinon": "^7.3.2"
+    "prettier": "^2.0.5"
   }
 }
