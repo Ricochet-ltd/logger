@@ -1,30 +1,3 @@
-const {createLogger, transports, format} = require('winston');
+const Log = require("./Log/Log");
 
-const addFormatting = format(info => {
-  if(typeof info.message === 'string') info.message = { event: info.message };
-
-  if(info.message.error instanceof Error) {
-    info.message.error = Object.getOwnPropertyNames(info.message.error).reduce((acc, el) => { acc[el] = info.message.error[el]; return acc; }, {});
-  }
-
-  return info;
-});
-
-module.exports = (() => {
-  const options = {
-    format: format.combine(
-        format.timestamp(),
-        addFormatting(),
-        format.json(),
-    ),
-    transports: [
-      new transports.Console(),
-    ]
-  };
-
-  const logger = createLogger(options);
-
-  process.on('unhandledRejection', error => logger.error({event: 'Unhandled promise rejection', error}));
-
-  return logger;
-})();
+module.exports = Log;

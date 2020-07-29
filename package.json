@@ -12,6 +12,10 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "stack-utils": "^2.0.2",
     "winston": "^3.3.3"
+  },
+  "devDependencies": {
+    "prettier": "^2.0.5"
   }
 }
