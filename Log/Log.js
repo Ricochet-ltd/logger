@@ -47,15 +47,13 @@ const addFormatting = format((info) => {
     delete info.message.traceId;
   }
 
-  // Order the keys (because we can)
-  return {
-    message: {
-      event: info.message.event,
-      module: info.message.module,
-      ...info.message,
-    },
-    ...info,
+  info.message = {
+    event: info.message.event,
+    module: info.message.module,
+    ...info.message,
   };
+
+  return info;
 });
 
 class Log {
