@@ -71,14 +71,9 @@ class Log {
 
     this.logger = createLogger(options);
 
-    // Add methods
-    Object.keys(config.npm.levels).forEach((level) => {
-      this[level] = (args) => this.logger[level](args);
-    });
-  }
+    this.logger.addModule = (module) => this.logger.child({ module });
 
-  addModule(module) {
-    return this.logger.child({ module });
+    return this.logger;
   }
 }
 
