@@ -53,6 +53,14 @@ const addFormatting = format((info) => {
     ...info.message,
   };
 
+  // Limit the size of the business object. If we want to log the FULL business for some reason, name the field something different
+  if (info.message.business) {
+    info.message.business = {
+      id: info.message.business.id,
+      name: info.message.business.name,
+    };
+  }
+
   return info;
 });
 
